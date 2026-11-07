@@ -1,688 +1,854 @@
-<p align="center">
-  <img src="new_audio_logo.svg" alt="Audiobook Read-Along logo" width="200">
-</p>
+<div align="center">
 
-<h1 align="center">
-  Audiobook Read-Along Plugin for KOReader
-</h1>
+<img src="ikon/kavram.png" alt="Kavram" width="120">
 
-<h3 align="center">
+# Kavram
 
-![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)
-![Platform](https://img.shields.io/badge/platform-Kobo%20%7C%20Kindle%20%7C%20PocketBook%20%7C%20Linux-blue)
-![Android](https://img.shields.io/badge/Android-supported-brightgreen)
-![TTS](https://img.shields.io/badge/TTS-Piper%20%7C%20sanoTTS%20%7C%20espeak--ng%20%7C%20Android-green)
+**Eğitim ve medya çalışmalarını tek çatı altında toplayan, özgür ve açık kaynaklı arşiv platformu**<br>
+**A free and open-source archive platform that brings education and media work under one roof**
 
-</h3>
+![Version](https://img.shields.io/badge/version-2.2.2-blue)
+![Python](https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white)
+![PyQt5](https://img.shields.io/badge/UI-PyQt5-41CD52?logo=qt&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-supported-success?logo=linux&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows%2010%2F11-experimental-orange?logo=windows&logoColor=white)
+![macOS](https://img.shields.io/badge/macOS%2011%2B-experimental-orange?logo=apple&logoColor=white)
+![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)
 
-<h4 align="center">
-  Consider supporting:<br><br>
-  <a href="https://www.patreon.com/8153512/join">
-    <img src="https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white" alt="Patreon">
-  </a>
-  <a href="https://github.com/sponsors/stradichenko">
-    <img src="https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#EA4AAA" alt="GitHub Sponsors">
-  </a>
-  <a href="https://buymeacoffee.com/stradichenko">
-    <img src="https://raw.githubusercontent.com/pachadotdev/buymeacoffee-badges/main/bmc-donate-white.svg" alt="BuyMeACoffee">
-  </a>
-</h4>
+### [🇹🇷 Türkçe](#türkçe)  ·  [🇬🇧 English](#english)
 
-<h4 align="center">
+<img width="3450" height="1880" alt="sh" src="https://github.com/user-attachments/assets/2f3a8157-ee17-4cf0-97b0-be832fb5480b" />
 
-[![Share on X](https://img.shields.io/badge/-Share%20on%20X-gray?style=flat&logo=x)](https://x.com/intent/tweet?text=Audiobook%20Read-Along%20for%20KOReader!%20TTS%20with%20word%20highlighting%20on%20e-readers.&url=https://github.com/stradichenko/audiobook.koplugin&hashtags=KOReader,TTS,eink)
+</div>
 
-</h4>
+---
 
-Text-to-speech for [KOReader](https://github.com/koreader/koreader) with synchronized word highlighting, automatic page turns, and Bluetooth audio support. Works offline on Kobo, Kindle, Android, and Linux.
+# Türkçe
 
-**Also available:**
+**Kavram**, eğitim ve medya çalışmalarını tek bir çatı altında toplayan, özgür ve açık kaynak kodlu bir arşiv platformudur.
 
-* [Audio] Play music files (MP3, FLAC, OGG, and more)
-* [Books] Play audiobooks with scrubber seek, chapter navigation, and sleep timer
-* [Audiobookshelf] Browse, download, and sync playback progress with an [Audiobookshelf](https://www.audiobookshelf.org/) server (see [setup guide](docs/AUDIOBOOKSHELF.md))!
-* [Sync] Storyteller compatibility; EPUB 3 Media Overlays support (work in progress)
-* [Sync] BookOrbit friendly: read-along EPUBs play their embedded narration, and narration-free copies from BookOrbit are detected with guidance (see [BookOrbit](#bookorbit))
+Metin, çizim, ses, video, ekran kaydı ve notlar gibi farklı araçları tek bir sistem içerisinde sunar. Oluşturduğunuz içerikleri düzenleyebilir, birbirleriyle ilişkilendirebilir ve **SPHERE** üzerinden zihin haritaları oluşturarak şifreli şekilde arşivleyebilirsiniz.
 
-## Audiobookshelf integration
+Kavram yalnızca hazır programlardan oluşmaz. İhtiyaçlarınıza göre kendi geliştirdiğiniz programları da sisteme dahil edebilirsiniz. Bu yönüyle Kavram, klasik bir uygulama paketinden çok, kendi çalışma ortamınızı oluşturabileceğiniz bir platform olarak tasarlanmıştır.
 
-Connect to an [Audiobookshelf](https://www.audiobookshelf.org/) server to browse your library, download audiobooks for offline playback, and sync progress across devices. All configuration is done through the KOReader menu; no file editing is required.
+**10 entegre program + genişletilebilir program sistemi.**
 
-For setup instructions, see [docs/AUDIOBOOKSHELF.md](docs/AUDIOBOOKSHELF.md).
+**Bu sayfada:** [İş akışı](#i̇ş-akışı) · [Programlar](#programlar) · [Kurulum](#kurulum) · [Yapı](#yapı) · [SPHERE](#sphere) · [TEXT](#text) · [DRAWING](#drawing) · [SOUND](#sound) · [AI](#ai) · [MEDIA](#media) · [REC](#rec) · [COPY](#copy) · [FILTER](#filter) · [CONVERTER](#converter)
 
-## BookOrbit
+## İş Akışı
 
-[BookOrbit](https://github.com/bookorbit/bookorbit) is a self-hosted library server whose read-along books use the same EPUB 3 Media Overlay format as Storyteller exports. This plugin plays the embedded narration: open the book in KOReader and start the read-aloud as usual, and the publisher's own sentence timing drives the highlights. Reading progress syncs through BookOrbit's own KOReader plugin, which follows the page position that the narration moves.
+1. **Dosya Üretimi:** Esas programlarda gerekli dosyalar oluşturulur.
+2. **Haritalandırma:** Üretilen bu dosyalar ana ekranda haritalandırılır.
+3. **Dışa Aktarma:** Zihin haritası şifrelenmiş biçimde dışa aktarılır (`Export`).
 
-One thing to know: by default, BookOrbit's KOReader delivery strips the narration to keep downloads small. The plugin detects those narration-free copies and tells you what to do. To get the audio, set the read-along delivery to **Original** for your KOReader credential and download the book again.
+> **İpucu:** Oluşturduğunuz dosyayı şifresiz olarak doğrudan paylaşabilir veya erişim şifresini satabilirsiniz.
 
-For the full walkthrough, see [docs/BOOKORBIT.md](docs/BOOKORBIT.md).
+> **Önemli Not:** İndirdiğiniz `.kitap` uzantılı dosyaların güvenilir bir kaynaktan olduğundan lütfen emin olun.
 
-## Quick start
+## Programlar
 
-### 1. Download and copy the plugin
+| Program | Ne işe yarar? |
+| --- | --- |
+| **SPHERE** | Ana ekran |
+| **TEXT** | Metin düzenleme |
+| **DRAWING** | Çizim ve animasyon |
+| **SOUND** | Ses düzenleme |
+| **AI** | Yapay hafıza |
+| **MEDIA** | Ses + video karma arşivi |
+| **REC** | Ekran ve ses kaydı |
+| **COPY** | Not defteri |
+| **FILTER** | Ses filtreleme |
+| **CONVERTER** | Format dönüştürme |
 
-Download the **`.zip` file** from the [latest release](https://github.com/stradichenko/audiobook.koplugin/releases/latest) (look for `audiobook-koplugin-v*.zip` under **Assets**). Do **not** download "Source code (zip)" -- that only contains the Lua sources without the bundled TTS engines.
+Bütün programlarda ortak kurallar:
 
-Unzip it and copy the `audiobook.koplugin` folder into KOReader's plugins directory:
+- Her düğmenin üzerinde fare **0,6 saniye** durunca, siyah zeminli bir kutuda ne işe yaradığı yazar.
+- Üst çubukta, en sağdaki düğme (programın adı: *Text*, *Sound*, *Rec* …) `Ctrl + Q` menüsünü açar; yanındaki **Export** dışa aktarır. Pencere daralırsa bu iki düğme alt satıra iner.
+- Düğmeler 30×30 (simge) veya 90×30 (yazılı) boyuttadır; yazı sığmazsa düğme kendiliğinden genişler.
 
-| Platform | Path |
-|----------|------|
-| Kobo | `.adds/koreader/plugins/` |
-| Kindle | `koreader/plugins/` |
-| Linux | `~/.config/koreader/plugins/` |
-| Android | `/sdcard/koreader/plugins/` |
-| PocketBook | `applications/koreader/plugins/` |
+---
 
-Restart KOReader after copying.
+## Kurulum
 
-### 2. Install a TTS engine (if not using the pre-built release)
+> **Not:** Linux Mint XFCE üzerinde kurulması önerilir.
 
-The pre-built release from step 1 **already includes espeak-ng, sanoTTS and Piper** -- no extra install needed on Kobo or Kindle. Skip to step 3.
+Komutları Kavram klasöründe (`kavram.py`'nin yanında) çalıştırın. Her komut şu adımları yapar: **sistem paketleri → sanal ortam (venv) → Python kütüphaneleri → C++ motorları → paketleme (`dist/`) → başlatma.** Paket, **kendi işletim sisteminde** üretilir (PyInstaller çapraz derleme yapmaz). İlk kurulum internet ister ve 10–30 dakika sürebilir.
 
-If you cloned the repository instead:
+| İşletim sistemi | Komut | Oluşan paket |
+| --- | --- | --- |
+| **Linux** (dağıtımı kendisi tanır) | `bash baslat_linux.sh` | `dist/kavram/kavram` ve `.tar.gz` |
+| Debian · Ubuntu · Mint · Pop!_OS · Kali | `bash kurulum_deb.txt` | aynısı |
+| Arch · Manjaro · EndeavourOS · CachyOS | `bash kurulum_arch.txt` | aynısı |
+| Fedora · Nobara · AlmaLinux · Rocky | `bash kurulum_fedora.txt` | aynısı (RPM Fusion otomatik eklenir) |
+| openSUSE Tumbleweed / Leap | `bash kurulum_opensuse.txt` | aynısı (Packman otomatik eklenir) |
+| Void Linux | `bash kurulum_void.txt` | aynısı |
+| **Windows 10 / 11** | `baslat_win.bat` dosyasına çift tıklayın | `dist\kavram\kavram.exe`, `.zip`, masaüstü kısayolu |
+| **macOS 11+** (Apple Silicon / Intel) | `baslat_mac.command` dosyasına çift tıklayın (veya `bash kurulum_mac.txt`) | `dist/Kavram.app`, `.dmg`, `.zip` |
 
-**Kobo** -- install espeak-ng via SSH or the terminal emulator (Menu > More tools > Terminal emulator):
+Linux betiklerini terminale **yapıştırarak** da çalıştırabilirsiniz.
+
+| Sistem | Durum |
+| --- | --- |
+| **Linux** | Destekleniyor. Paket derlenip açıldığı doğrulandı. |
+| **Windows 10/11** | **Deneysel.** Kod ve betikler hazır; Linux üzerinde taklitle denendi, gerçek Windows'ta henüz doğrulanmadı. |
+| **macOS 11+** | **Deneysel.** Aynı durum: gerçek Mac'te henüz doğrulanmadı. |
+
+> Bir adım takılırsa çıktıyı *issue* olarak paylaşın. Fedora, openSUSE ve Void betikleri de kendi dağıtımlarında henüz denenmedi (kurulamayan paket olursa betik uyarı verip devam eder). Alpine ve NixOS desteklenmiyor.
+
+Windows/macOS'ta ekran, mikrofon ve kamera kaydının çalıştığını kurulumdan sonra şu komutla denetleyebilirsiniz (aygıtları listeler, kısa deneme kaydı yapar, her adımı `OK` / `HATA` olarak yazar):
 
 ```bash
-opkg update && opkg install espeak-ng
+venv\Scripts\python kayit_testi.py      # Windows
+./venv/bin/python kayit_testi.py        # macOS
 ```
 
-If `opkg` is unavailable, grab the `.ipk` from [nickel-packages](https://github.com/nickel-packages/packages) and run `opkg install /mnt/onboard/espeak-ng*.ipk`.
+<img width="1920" height="1049" alt="3" src="https://github.com/user-attachments/assets/0b8b71af-737a-4387-a516-77c0fa217e6c" />
 
-**Linux** -- `sudo apt install espeak-ng`
-
-**Android (Boox, etc.)** -- the pre-built release includes `tts_helper.dex`, which bridges to the **device's system TTS engine** (Google, Samsung, SherpaTTS, ...). The bundled Piper / espeak-ng binaries and the HuggingFace `.onnx` voices in `piper/` **do not run on Android**. For natural neural voices, install [SherpaTTS](https://f-droid.org/packages/org.woheller69.ttsengine/) and set it as the default engine. Full walkthrough: [High-quality voices on Android](#high-quality-voices-on-android-sherpatts).
-
-If you cloned the repo instead of downloading a release, build the `.dex` manually (requires Android SDK):
-
-```bash
-cd audiobook.koplugin/android/
-./build-dex.sh
-```
-
-The bundled espeak-ng and Piper binaries are for Linux-based e-readers and will not run on Android. See [Android support](#android-support) for details.
-
-### 3. Start reading
-
-- **Long-press a word** to open the dictionary popup, then tap **Read aloud from here**.
-- Or **select a paragraph**, then tap **Read aloud from here** in the selection menu.
-- Or go to **Tools > Audiobook Read-Along > Start reading from current page**.
-
-## Optional: Piper neural TTS
-
-> **Android:** skip this section. The plugin's Piper binaries and HuggingFace `.onnx` files cannot run on Android. Use a system TTS engine such as SherpaTTS instead: [High-quality voices on Android](#high-quality-voices-on-android-sherpatts).
-
-Piper sounds much more natural than espeak-ng. It runs fully offline on Kobo's ARM processor (~40 MB for engine + voice model). The [pre-built release](https://github.com/stradichenko/audiobook.koplugin/releases/latest) already includes Piper and a default voice (`en_US-danny-low`). For faster load times on Kobo, `low` quality voices like this one are recommended (see [Choosing a voice](#choosing-a-voice)). To build a bundle yourself, see [Building from source](#building-from-source).
-
-Switch between espeak-ng, sanoTTS and Piper any time from **Tools > Audiobook Read-Along > Voice settings**.
-
-### Choosing a voice
-
-Listen to samples and pick a voice: [rhasspy.github.io/piper-samples](https://rhasspy.github.io/piper-samples/)
-
-Voices come in four quality levels:
-
-| Quality | Sample rate | Size | Notes |
-|---------|-------------|------|-------|
-| low | 16 kHz | ~15 MB | **Recommended for Kobo** -- fast load, low RAM |
-| medium | 22 kHz | ~60 MB | Better quality, but slower to load on Kobo |
-| high | 22 kHz | ~100 MB | Best quality, more RAM/CPU |
-
-> On Kobo (512 MB RAM), `low` voices are recommended. `medium` works but the model takes noticeably longer to load. Not every voice is available at every quality level -- check HuggingFace for what's offered.
-
-### Downloading additional voices
-
-Every voice needs two files: a `.onnx` model and a `.onnx.json` config. Place both in `audiobook.koplugin/piper/`.
-
-Voices are hosted on HuggingFace. The URL pattern is:
+## Yapı
 
 ```text
-https://huggingface.co/rhasspy/piper-voices/resolve/main/<lang>/<lang_REGION>/<speaker>/<quality>/
+kavram/
+├── kavram.py              Çekirdek: program yükleyici ve editör değiştirici (Ctrl + Q)
+├── kavram_ui.py           Ortak tasarım: düğmeler, üst bar, 0,6 sn Türkçe ipuçları
+├── kavram_platform.py     Linux / Windows / macOS farkları
+├── kavram_capture.py      Windows/macOS kayıt altyapısı (FFmpeg + OpenCV + PortAudio)
+├── kavram.spec            Paketleme tarifi (PyInstaller)
+├── baslat_linux.sh · baslat_win.bat · baslat_mac.command     Sistem başlatıcıları
+├── kurulum_*.txt          Dağıtıma / sisteme özel kurulum betikleri
+├── text/ drawing/ sound/ media/ rec/ sphere/ ai/ copy/ filter/ converter/ file_manager/ terminal/
+│       └── her programın klasöründe:  rec.py (Linux) · rec_win.py (Windows) · rec_mac.py (macOS)
+└── ikon/                  Uygulama simgesi
 ```
 
-For example, to download **en_US-lessac-medium**:
-
-```bash
-cd audiobook.koplugin/piper/
-curl -LO https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx
-curl -LO https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
-```
-
-Or for **en_US-ryan-low**:
-
-```bash
-curl -LO https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/ryan/low/en_US-ryan-low.onnx
-curl -LO https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/ryan/low/en_US-ryan-low.onnx.json
-```
-
-Browse all available voices: [huggingface.co/rhasspy/piper-voices](https://huggingface.co/rhasspy/piper-voices/tree/main)
-
-## Optional: sanoTTS lightweight neural TTS
-
-[sanoTTS](https://github.com/ampixa/sanoTTS) is a tiny neural engine that slots between Piper and espeak-ng: much more natural than espeak-ng, and far lighter than Piper. The bundled voices are small (kristin and amy are fully int8 at roughly 5 MB of RAM; the French fr voice is fp32 at ~6.3 MB), where Piper wants a ~15-60 MB voice and ~100 MB of RAM. kristin synthesizes faster than real time even on single-core e-ink hardware, so sentences keep coming without the gaps Piper needs on slow devices.
-
-The pre-built release bundles three voices, switchable from **Tools > Audiobook Read-Along > Voice settings > sanoTTS voice**:
-
-- **kristin** (default, ~700 KB): the R7 int8 voice -- the fastest neural option, comfortably real time even on single-core hardware.
-- **amy** (~1.5 MB): the fully-int8 piperlite stack, the most natural-sounding of the small voices; slower than kristin (not real time on single-core devices).
-- **fr** (~6.3 MB, fp32): the French voice (fr-siwis), for French books. Runs the fp32 decoder, so it is the slowest of the three on e-ink hardware.
-
-Word phonemization runs in-process by default: a pronunciation dictionary (misaki-derived for English, espeak-derived French lexicon) turns text into phonemes directly, with no espeak process per clause, and keeps word boundaries exact for the word highlight. Hard-to-read words (names) still fall back to espeak per clause, and the **Word phonemization** toggle in the same menu switches back to espeak entirely. The engine is punctuation-aware in two layers: the punctuation mark's own phoneme token is kept in the stream so questions get their rising contour and periods their falling one, and short silence gaps are inserted at clause boundaries (150 ms after a comma, 350 ms after a sentence end).
-
-> sanoTTS trades some naturalness for its footprint; where Piper runs comfortably it sounds better. sanoTTS is the pick on devices where Piper is too slow or too large.
-
-## Optional: Japanese (sanoTTS-jp, bring your own voice)
-
-[sanoTTS-jp](https://github.com/ayutaz/sanoTTS-jp) is an independent Japanese TTS built on the sanoTTS recipe. The plugin ships its **engine** (a small static binary, MIT) but not its **voice data**: the int8 weights (~0.6 MB) and the Japanese pronunciation dictionary (438,750 entries, ~13.1 MB) are yours to bring. That split is deliberate. The voice data carries its own license with usage terms for generated audio, and shipping it would make this plugin the distributor of those terms for audio it cannot police; bringing it yourself keeps the license between you and the voice's author, and keeps the release zip free of model data. Nothing Japanese is bundled and the backend only appears once you fetch the two files.
-
-### The clean way: download in-app
-
-Open **Tools > Audiobook Read-Along > Voice settings > Download sanoTTS-jp files…** and download both entries from the pinned sanoTTS-jp v1.0.0 release:
-
-- **Voice weights** (~0.6 MB int8 blob)
-- **Japanese dictionary** (438,750 entries): kanji-to-reading lookup; smaller accuracy tiers exist upstream but only the full one is supported
-
-Each entry shows a ✓ once it is complete and size-verified, and the license files (`LICENSE-MODEL.md`, `NOTICE.md`) are saved next to the voice for your records. Then select **sanoTTS-jp (Japanese)** under Voice settings > TTS engine.
-
-### The manual way
-
-Download the same two files from the [sanoTTS-jp v1.0.0 release](https://github.com/ayutaz/sanoTTS-jp/releases/tag/v1.0.0) — exact names and sizes matter, they are checked:
-
-- `saanotts-jp-v4-int8.bin` (654,032 bytes)
-- `k1-dict-438750.bin` (13,702,320 bytes)
-
-Drop both into `audiobook.koplugin/sanotts-jp/` next to `snt_jp_server`, restart KOReader, and select the engine.
-
-### What to expect
-
-Kanji and kana text both work; the engine reads Japanese and stays silent on sentences it cannot decode (for example plain English text inside a Japanese book). The rate slider has no effect on this voice yet (the core has no speed control), and the voice is never selected automatically: you opt in by downloading the files and picking the engine.
-
-## PocketBook audio
-
-On PocketBook, the system ALSA configuration routes all audio through a Loopback card. The `tts_sm` PCM device (defined in `/etc/asound.conf`) chains through `softvol -> dmix -> hw:Loopback,0`. A system process (`alsaloop`) reads from `hw:Loopback,1` and plays to the physical codec (`hw:0`). The plugin bundles a small ALSA player (`wav-play`) that opens `tts_sm` directly, avoiding any dependency on `aplay` or GStreamer. Bluetooth output on PocketBook uses the standard BlueZ + `alsaloop` path managed by the firmware.
-
-## Bluetooth audio (Kobo)
-
-The plugin outputs audio through a Bluetooth A2DP connection when a BT device is paired. The connection is managed through the plugin menu:
-
-**Tools > Audiobook Read-Along > Bluetooth settings**
-
-Two Bluetooth stacks are supported, auto-detected at runtime:
-
-| Stack | Devices | Audio path |
-|-------|---------|------------|
-| **MTK** (mtkbtmwrpc) | Clara 2E, Sage (fw < 4.38), Libra Colour | `audioout` daemon (GStreamer vendor sink, persistent) |
-| **BlueZ** (bluetoothd) | Libra 2 / Io, Sage (fw >= 4.38) | `audioout` daemon (bluealsa PCM) when enabled; aplay via ALSA otherwise |
-
-On MTK devices the BT audio pipeline uses an exclusive abstract socket. If audio stops working after a crash, restart KOReader -- the plugin kills orphan processes on startup.
-
-On BlueZ devices, KOReader's startup script kills `bluetoothd` and `bluealsa` whenever KOReader is launched from Nickel. If the plugin has a saved Bluetooth device, it restores the stack and reconnects that device automatically at startup; audiobook playback routes to the connected headset through the BlueALSA PCM. A device connected once from the plugin's Bluetooth menu is remembered for this. When the firmware ships its own `bluealsa` (Kobo fw 4.33+), the plugin uses the firmware daemon and the firmware ALSA plugin, keeping the bundled build only as a fallback for older devices.
-
-> On MTK Kobo devices, the mtkbtmwrpc daemon binds a single abstract socket. Only one GStreamer pipeline can hold it at a time. The plugin keeps one persistent pipeline alive across sentences to avoid reconnection gaps. On BlueZ devices, the plugin starts `bluetoothd` and resets the HCI adapter automatically when you power on Bluetooth.
-> **Known issue on MTK devices:** MBROLA voices other than `mb-en1` (UK English Male 1) may produce mid-sentence audio repeats due to a firmware bug in the MTK Bluetooth SBC encoder. This affects all MBROLA voices except `mb-en1`. See [docs/MBROLA_MTK_REPEAT_BUG.md](docs/MBROLA_MTK_REPEAT_BUG.md) for the full diagnostic report.
-
-**The `audioout` daemon (Kobo MTK and BlueZ).** On MTK devices the plugin now routes all read-aloud and audiobook audio through a small background daemon (`audioout`) that owns the Bluetooth pipeline for the whole session: sentences play without reconnection gaps, pause keeps the link alive with silence, position comes from the sink itself (so the highlight tracks the real audio), and volume changes apply without a pipeline rebuild. It is on by default on MTK; the toggle lives in **Voice settings** (and in the read-along bar's TTS settings). If the daemon cannot start or the Bluetooth link dies mid-read, playback fails with the usual Bluetooth message -- there is no second implementation behind it anymore. On BlueZ devices the same daemon drives the bluealsa PCM for read-aloud and audiobook playback; if the daemon refuses, playback falls back to the direct aplay pipe. Seek, position and completion on the daemon path all come from the daemon's audible clock (no stop/restart gap on seek, no wall-clock completion estimates). At normal speed the daemon also decodes compressed audiobook files (MP3, M4B/M4A, FLAC, OGG/Vorbis, Opus) in-process -- no ffmpeg feeder process per track; speed changes fall back to the ffmpeg feeder, whose filter chain carries the tempo adjustment.
-
-For the full platform audio and Bluetooth architecture (Kobo generations, Kindle, Android), see [docs/PLATFORM_AUDIO.md](docs/PLATFORM_AUDIO.md). AirPods Pro 3 on Kindle Paperwhite 11 (what works, pause/resume keepalive, stem Play/Pause limitation): [docs/AIRPODS_PRO3_KINDLE.md](docs/AIRPODS_PRO3_KINDLE.md).
-
-## Playback controls
-
-| Button | Action |
-|--------|--------|
-| Rewind | Previous sentence. Hold for 3x skip. |
-| Play/Pause | Toggle playback. |
-| Forward | Next sentence. Hold for 3x skip. |
-| Close | Stop reading and dismiss the bar. |
-
-Reading pauses automatically when you open a menu and resumes when you close it.
-
-## Settings
-
-All settings are under **Tools > Audiobook Read-Along**:
-
-- **Start reading from current page** - begin read-along from the current page
-- **Bluetooth settings**
-  - **Bluetooth** - pair, connect, disconnect, scan
-  - **Headset media buttons** - use play/pause/next/prev on a Bluetooth headset or speaker to control TTS playback
-  - **Disconnect alert** - notify if all BT audio devices disconnect during playback
-- **Voice settings** - TTS engine, voice, speech rate, pitch, volume, sentence/paragraph pauses (espeak-ng), sentence/paragraph gaps (Piper), word gap, clause pause. Includes **Quick start with espeak** (Piper-only) which plays the first sentence with espeak-ng while Piper loads, avoiding the ~3s cold start silence. **Android:** language and voice are chosen here (or from the overlay **⚙**); neural quality comes from the system engine (see [SherpaTTS](#high-quality-voices-on-android-sherpatts)).
-- **General settings**
-  - **Audio output (PocketBook)** - ALSA device selection for PocketBook firmware quirks
-  - **Keep playing when lid is closed** - prevents device suspend so audio continues with the case closed
-  - **Hide control bar while playing** - experimental; hides the playback bar during TTS so the page is fully visible
-  - **Highlight style** - background (default), invert (best for e-ink), underline, box
-  - **Auto-advance pages** - turn pages automatically
-  - **Highlight sentences** - draw highlight on the active sentence
-  - **Highlight words** - draw a small inverted box on the spoken word inside the sentence highlight (EPUB read-along; the box position comes from real word timing and the rendered line map)
-  - **Group short cues (e-ink)** - for Media Overlay read-aloud books, merge consecutive short phrases into one highlight that stays on screen at least half a second, so slow e-ink refreshes do not skip between words; audio is unaffected
-- **Generate bug report** - save a diagnostic report to share when reporting issues
-- **Run device benchmark** - run a TTS performance benchmark on this device
-- **Check for updates** - fetch and install a newer release from GitHub
-
-## Tweaking & advanced configuration
-
-### Changing espeak-ng language
-
-The **Voice settings** menu only lists English accents, but espeak-ng supports [dozens of languages](https://github.com/espeak-ng/espeak-ng/blob/master/docs/languages.md). To read in another language, set the voice code manually:
-
-1. Close KOReader completely.
-2. Open KOReader's settings file (`settings.reader.lua` in the KOReader directory).
-3. Find the `audiobook_settings` table and set `tts_voice` to the desired code:
-
-```lua
-["audiobook_settings"] = {
-    ["tts_voice"] = "pt-br",
-    ["tts_voice_label"] = "Portuguese (Brazil)",
-    -- ... other settings ...
-},
-```
-
-Restart KOReader and start reading. The plugin will use the new voice immediately.
-
-> **Tip:** You can also add a variant (e.g. `pt-br+f2` for female voice 2). See the [espeak-ng voice documentation](https://github.com/espeak-ng/espeak-ng/blob/master/docs/voices.md) for the full list.
-
-
-## Architecture
-
-```
-audiobook.koplugin/
-  main.lua             - entry point, menus, event hooks
-  synccontroller.lua   - coordinates audio timing with highlights
-  ttsengine.lua        - TTS synthesis, audio playback, backend detection
-  piperqueue.lua       - persistent Piper/sanoTTS server management
-  textparser.lua       - sentence/word tokenization with positions
-  highlightmanager.lua - screen-coordinate highlight via crengine
-  playbackbar.lua      - transport controls widget
-  menubuilder.lua      - voice/highlight settings menus
-  btmanager.lua        - Bluetooth device scanning and pairing (MTK + BlueZ)
-  btui.lua             - BT menu UI and disconnect watcher
-  btmediacontrol.lua   - BT headset media buttons (AVRCP play/pause/skip)
-  benchmarkrunner.lua  - in-plugin TTS benchmark runner
-  wavutils.lua         - WAV file reading, writing, and manipulation
-  androidtts.lua       - Android TTS via JNI (DexClassLoader + TtsHelper)
-  utils.lua            - shared helpers
-  sanotts/             - sanoTTS int8 neural engine (C server + voice blobs)
-  wav-play.c           - minimal ALSA WAV player for PocketBook (compiled to wav-play/wav-play)
-```
-
-### Design notes
-
-**Persistent Piper server.** On Kobo's single-core ARM, loading the ONNX model takes ~4.5 seconds. A persistent server process keeps the model in memory and accepts sentences over a FIFO. Combined with 3-sentence batching this brings the realtime factor from 0.085x (old 2-server config) to 0.329x. See [dev/benchmark/RESULTS.md](dev/benchmark/RESULTS.md) for the full analysis.
-
-**Binary-search highlight alignment.** CRe (crengine) snaps text selections to word boundaries, and proportional fonts make character-to-pixel estimates unreliable. The highlight manager uses the proportional estimate as an initial guess, then binary-searches the x coordinate by querying CRe until the selected text matches the target sentence. Converges in 2-4 queries.
-
-**Exclusive BT socket (MTK only).** Kobo's MediaTek BT firmware exposes a single abstract socket (`@kobo:mtkbtmwrpc`). The plugin keeps one GStreamer pipeline alive for the entire reading session and feeds audio through a FIFO. Orphan pipelines from crashes are killed on startup via PID files and `pkill`. On BlueZ devices (Libra 2, etc.) audio goes through standard ALSA and this socket management is not needed.
-
-**Long-sentence splitting.** Piper's attention mechanism scales quadratically with input length. On Kobo's 512 MB of RAM the server OOMs on sentences above ~1000 characters and throughput drops from ~7 ch/s at 300 chars to ~3 ch/s at 1400 chars. The text parser automatically splits any sentence longer than 300 characters at natural clause boundaries (`;` `:` `, and/but/or...` ` - `) then merges fragments shorter than 80 characters with a neighbour (below that, ~90% of synthesis time is wasted on per-request overhead) and re-splits anything still over 300 at word boundaries. See [dev/benchmark/RESULTS_LONG.md](dev/benchmark/RESULTS_LONG.md) for the full data.
-
-## Troubleshooting
-
-| Problem | Fix |
-|---------|-----|
-| Plugin not in menu | Folder must be `audiobook.koplugin` inside `plugins/`. The plugin only appears in the **Tools** menu when a book is open. Restart KOReader after copying. |
-| No sound | **Kobo/Linux:** Run `espeak-ng "hello" -w /tmp/t.wav && aplay /tmp/t.wav` over SSH. **PocketBook:** generate a bug report and check `wav_play_smoke_test` -- it runs wav-play against the `tts_sm` device and prints `PLAYING` on success. |
-| No audio player found (Kindle) | Pair BT headphones via the Kindle top-swipe menu **before** starting playback. If already paired, restart KOReader so the plugin re-detects the audio output. |
-| Kindle native (Ivona) voice fails on firmware 5.19.x | Amazon removed the legacy text-injection APIs in 5.19.x (KT6, PW6 Gen12). Use the bundled espeak-ng engine instead; the plugin skips the dead native path automatically. |
-| Piper falls back to espeak on slow devices (KT6-class) | Piper needs roughly 1 GB-class ARM performance; on the slower MT8110 SoC (Kindle 11th gen / KT6) it cannot keep up even at the lowest quality tier, and the plugin falls back to espeak-ng after its 2-minute watchdog. espeak-ng is the practical engine on those devices. |
-| No TTS engine found | Install espeak-ng (see Quick start). |
-| No TTS engine found (Android) | Ensure `android/tts_helper.dex` is present inside the plugin folder. The pre-built release includes it; if you cloned from source, run `./build-dex.sh` in the `android/` directory. The device must also have a TTS engine installed (most do by default). See [Android support](#android-support). |
-| Android TTS sounds high / noisy / unlike the engine's own preview | Keep plugin pitch at the default (50). Turn **off** **Android: persistent audio stream**. Fully quit KOReader after changing the system TTS engine or language. See [Android support](#android-support). |
-| Android underline does not match the spoken sentence | Android TTS has no word timestamps; the plugin underlines the spoken sentence as a contiguous phrase instead of chasing estimated word positions. Fully quit KOReader after updating the plugin. |
-| Android TTS is robotic / not my SherpaTTS voice | SherpaTTS is installed but is **not** Android's preferred TTS engine. The plugin always uses the system default. Follow [High-quality voices on Android](#high-quality-voices-on-android-sherpatts), then fully quit KOReader and reopen it. |
-| Android TTS is high / noisy / not the SherpaTTS in-app voice | Plugin pitch must stay at the default (50). Turn **off** **Android: persistent audio stream**. Fully quit KOReader after changing the system TTS engine or language. See [Android support](#android-support). |
-| Android underline does not match the spoken sentence | Android TTS has no word timestamps; the plugin underlines the spoken sentence as a contiguous phrase instead of a short coincidental prefix. Fully quit KOReader after updating the plugin. |
-| BT audio silent | Restart KOReader to kill orphan pipelines. Check BT is paired in the plugin menu. |
-| SSH refused on port 22 | KOReader uses port 2222: `ssh root@<ip> -p 2222` |
-| `.adds` not visible | Enable hidden files on your OS. The folder starts with a dot. |
-
-### Filing a bug report
-
-When reporting a problem, please attach **both** files described below. The bug report captures your device environment (hardware, audio, settings) while the crash log captures KOReader's runtime behavior (errors, warnings, timing). Together they give the full picture needed to diagnose an issue.
-
-1. Reproduce the problem (use the plugin normally until the issue occurs).
-2. Generate the plugin bug report (see below).
-3. Locate the KOReader crash log (see below).
-4. Attach both files to your [GitHub issue](https://github.com/stradichenko/audiobook.koplugin/issues).
-
-> **Tip:** Generate the report and grab the crash log **before** restarting KOReader. The crash log is truncated on every launch, so restarting may discard the relevant entries.
+- **Çalışma:** `kavram.py` açılır, işletim sistemini belirler ve her program için o sistemin dosyasını yükler (yoksa varsayılan `.py`'ye döner). Her program kendi klasöründe durur; C++ motorları ve `derleme.txt` de aynı klasördedir.
+- **Paketleme:** `kavram.spec` yalnızca çalışılan sistemin dosyalarını toplar ve `dist/` içinde paketi üretir.
+- **C++ motorları:** ses, filtre ve dönüştürücü motorları her sistemde derlenir. Medya ve ekran kaydı motorları (GStreamer / PipeWire / X11) yalnızca Linux'tadır; Windows/macOS'ta yerlerini FFmpeg, OpenCV ve PortAudio tabanlı Python altyapısı alır.
 
 ---
 
-#### 1. Plugin bug report
+# SPHERE
 
-The plugin's diagnostic report captures device info, TTS engine detection, audio configuration, Bluetooth status, and plugin settings. There are two ways to generate it:
+## Ana Ekran
 
-**Option A: From the plugin menu**
+Ana ekran, zihin haritalarının şifreli olarak arşivlendiği yerdir.
 
-**Tools > Audiobook Read-Along > Generate bug report**
+<img width="1918" height="1047" alt="s1" src="https://github.com/user-attachments/assets/4e6782df-e53e-4245-a70f-131ed9d720e4" />
 
-This saves a `.txt` file to your device's root storage (see locations below).
+<img width="1920" height="1047" alt="sphere" src="https://github.com/user-attachments/assets/bccf70d7-1060-4ec4-a2be-36493d3fe0f6" />
 
-**Option B: Standalone script (when the plugin menu is not visible)**
+## Butonlarının İşlevleri
 
-If the plugin doesn't appear in the KOReader menu at all, you can run the report generator directly via SSH or KOReader's built-in terminal emulator (Menu > More tools > Terminal emulator):
+| Buton | İşlevi |
+| --- | --- |
+| **File** | İçeri arşiv almak ve kare (dosya) eklemek için kullanılır. |
+| **Geri Al / İleri Al** | Yapılan işlemleri geri alır veya yeniden uygular. |
+| **+** | Kare ekler. |
+| **Liste** | Bağlantıların konum listesini açar. |
+| **Terminal** | Terminal komutlarını kullanmak için açılır. |
+| **/** | Arka plandaki gridli yapıyı açar / kapatır. |
+| **Export** | **Sol tık:** XZ formatında dosya oluşturur (dosya daha küçük, ama oluşması daha uzun sürer).<br>**Sağ tık:** GZ formatında kaydeder (dosya daha büyük, ama daha hızlı oluşur).<br>Dosya `.kitap` uzantısıyla, şifreli olarak kaydedilir. |
+| **Sphere** | Bütün programlarda üst barın en sağında, programın adıyla bulunur. `Ctrl + Q` menüsünü açar. |
 
-```bash
-sh /mnt/onboard/.adds/koreader/plugins/audiobook.koplugin/generate-report.sh   # Kobo
-sh /mnt/us/koreader/plugins/audiobook.koplugin/generate-report.sh              # Kindle
-sh /sdcard/koreader/plugins/audiobook.koplugin/generate-report.sh              # Android
+### Terminal Komutları
+
+**1. `reset`** — Her şeyi tamamen siler.
+
+**2. `ap resim konumu`** — Duvar kâğıdını değiştirir.
+
+```text
+ap /home/lts/Pictures/resim4.png
 ```
 
-The report is printed to the terminal and also saved to a file. If using the terminal emulator, you can scroll up to read it on screen.
+### Harici Programları Sisteme Dahil Etme
 
-**Report location:**
+**3. `isim program konumu`** — `Ctrl + Q` menüsünün **alt** kısmına bir program ekler (yardımcı programlar için).
 
-| Platform | Report location |
-|----------|----------------|
-| Kobo | `/mnt/onboard/audiobook-bug-report-*.txt` |
-| Kindle | `/mnt/us/audiobook-bug-report-*.txt` |
-| Android | `/sdcard/audiobook-bug-report-*.txt` |
-| Linux | `~/audiobook-bug-report-*.txt` |
+```text
+Zaman /home/lts/Kavram/Programlar/Zaman/Zaman
+```
 
-**What the report contains:**
+<img width="1920" height="1049" alt="Z" src="https://github.com/user-attachments/assets/a569dba7-1714-42cd-8502-16d0bd917692" />
 
-- Device model, platform, screen size, kernel version
-- KOReader version
-- TTS engine detection results (which backends were found/missing)
-- Audio player availability (aplay, GStreamer, etc.)
-- Plugin settings (speech rate, highlight style, etc.)
-- Full ALSA configuration (`asound.conf` contents, sound card list)
-- Audio process list (alsaloop, bluealsa, etc. with PIDs)
-- wav-play binary details and smoke test result (opens `tts_sm`, plays silence, checks for `PLAYING`)
-- ALSA mixer state
-- Bluetooth hardware details (HCI devices, paired/connected devices, adapter info)
-- Memory and disk info
+**4. `k isim program konumu`** — `Ctrl + Q` menüsünün **üst** kısmına bir program ekler (ana programlar için). Dosya eklemek de mümkündür.
 
-**What the report does NOT contain:**
+```text
+k Blender /home/lts/blender-5.2.0-linux-x64/blender
+```
 
-- Book titles, content, or reading positions
-- File paths with usernames (sanitized automatically)
-- Highlights, bookmarks, or notes
-- Network information or credentials
+<img width="1920" height="1050" alt="bl" src="https://github.com/user-attachments/assets/2749222e-e76c-43ec-b58f-aa33c5370315" />
+
+> **Önemli:** Kavram bir tür işletim sistemi gibi çalıştığı için ana program kapatılırsa ona bağlı bütün programlar otomatik kapanır. Örneğin Blender kapatılmadan önce dosyayı kaydetmenizi ister; ama Kavram'ı kapatırsanız Blender hiçbir şey sormadan kapanır. Veri kaybı yaşamamak için dosyalarınızı önceden yedekleyin.
+
+### Dikkat Edilmesi Gerekenler
+
+1. **Dosyalarınızı yedekleyin.** Veri kaybı ihtimali çok düşük olsa da sıfır değildir.
+2. **`reset` komutu** terminale yazıldığında her şey silinir.
+3. **`Ctrl + S`** Sphere dışındaki 7 ana programda geçerlidir: açık programı kapatır ve ana ekrana döner. **Hiçbir şeyi kaydetmez.** Hızlı kaydetme için her editörde **File** butonunun yanındaki ikonu kullanın. Sphere'de bu ikon, o anki düzeni varsayılan yapar; program yeniden açılınca her şey aynı şekilde gelir.
 
 ---
 
-#### 2. KOReader crash log
+# TEXT
 
-KOReader logs all warnings, errors, and debug output to a file called `crash.log` in its installation directory. This is **not** generated by the plugin -- it is KOReader's own runtime log and captures everything that happens during a session, including TTS process spawning, fallback events, and Lua errors.
+**Metin düzenleme programı.** Zengin metin belgeleri oluşturur, biçimlendirir; not ve kod bloklarını düzenler.
 
-**Crash log location:**
+<img width="1920" height="1049" alt="T1" src="https://github.com/user-attachments/assets/665de852-5ba9-4185-b21a-39a42a75a2bc" />
 
-| Platform | Path |
-|----------|------|
-| Kobo | `/mnt/onboard/.adds/koreader/crash.log` |
-| Kindle | `/mnt/us/koreader/crash.log` |
-| PocketBook | `/mnt/ext1/applications/koreader/crash.log` |
-| Linux | Inside the KOReader installation directory |
-| Android | No `crash.log` file -- use `adb logcat` to capture KOReader output |
-
-Connect your device via USB and copy the file. On Kobo the `.adds` folder is hidden -- enable hidden files in your file manager to see it.
-
-> KOReader truncates `crash.log` to ~500 KB on every launch. If you restart KOReader before copying the file, earlier entries may be lost. Copy it while KOReader is still running or immediately after the issue occurs.
+| Buton | İşlevi |
+| :--- | :--- |
+| **File** | Dosya açma / içeri aktarma penceresini açar. |
+| **Kaydet** (disk ikonu) | Açık belgeyi kaydeder. |
+| **Geri Al / Yinele** | Düzenleme geçmişinde geri veya ileri gider. |
+| **Yazı boyutu** (rakam) | Tıklayınca boyut listesi açılır; fare tekerleği ile de değişir. |
+| **O** | Yazılan satırları ortalar (açık / kapalı). |
+| **A** | Yazıyı kalın yapar (açık / kapalı). |
+| **Color** | Yazı rengi panelini açar; seçilen renkler HEX kodlarıyla görünür. |
+| **/** | Sembol panelini açar / kapatır. |
+| **I** | Otomatik kaydırma (okuma modu) başlatır / durdurur. |
+| **Hız** (rakam) | Kaydırma hızını ayarlar (tekerlekle de değişir). |
+| **Terminal** | Özel silme komutlarını çalıştırır (örn. dil veya karakter grubu silme). |
+| **Arama kutusu, ara, ↑, ↓** | Metinde arar; bulunan sonuçlar arasında ileri / geri gider. |
+| **Export** | Belgeyi dışa aktarır. |
+| **Text** | Programın adı. `Ctrl + Q` menüsünü açar. |
 
 ---
 
-#### Why both files matter
+# DRAWING
 
-| Diagnostic question | Bug report | Crash log |
-|---------------------|:----------:|:---------:|
-| Device model, hardware specs, KOReader version, plugin version, TTS engines installed (espeak, Piper, Android), plugin settings (rate, highlight, voice) | yes | no |
-| Full ALSA configuration (asound.conf, sound cards, PCM devices), audio process list (alsaloop, bluealsa PIDs), ALSA mixer state, wav-play smoke test result | yes | no |
-| Bluetooth pairing and connection state, HCI devices, adapter info | yes | no |
-| Lua errors and stack traces, TTS process spawning and fallback events, sentence progression and page turns, timing of operations (delays, freezes), Piper server startup and delivery, device freeze or resource exhaustion | no | yes |
+**Çizim ve animasyon programı.** Sayfa sayfa çizim, katmanlar, renk karıştırma, ızgara ve kare kare animasyon sunar.
 
-## Device benchmark
+<img width="1920" height="1050" alt="d1" src="https://github.com/user-attachments/assets/f4d11e07-ac0c-4ff9-b1f0-672a7c87cf5c" />
 
-The plugin includes a built-in benchmark that measures TTS synthesis speed on your device. It runs a fixed set of test sentences through each available engine (espeak-ng, Piper) and saves a report you can share on GitHub to help document device performance.
+| Buton | Sol tık | Sağ tık |
+| :--- | :--- | :--- |
+| **File** | Görsel veya proje dosyası içe aktarır. | Referans görsel ekler. |
+| **Kaydet** | Projeyi kaydeder. | — |
+| **Sayfa numarası** | Sayfa menüsünü açar (tekerlekle sayfalar arasında gezilir). | — |
+| **+** / **−** | Yeni sayfa ekler / mevcut sayfayı siler. | — |
+| **Geri Al / Yinele** | Son işlemi geri alır / yineler. | — |
+| **Kalem stili** | Fırça stilini değiştirir. | — |
+| **O** | Gezinme modunu açar / kapatır. | Tuval boyutu / çözünürlük penceresini açar. |
+| **G** | Referans görseli gösterir / gizler. | Referans saydamlığı ve katman konumu menüsü. |
+| **Mix açısı** | Karışım açısı menüsü (tekerlekle de değişir). | Karışım modu menüsü. |
+| **Color** | Renk seçimi menüsünü açar. | — |
+| **Eraser** | Silgi modunu açar / kapatır. | Arka plan rengini değiştirir. |
+| **R:** | Fırça / silgi boyutu menüsünü açar. | — |
+| **Çizim** | Katman menüsünü açar. | — |
+| **#** | Aktif katmanı en üstte sabitler. | — |
+| **lm** | Lazy Mouse modunu açar / kapatır (yavaşlatılmış fare, düzgün çizgi). | Lazy Mouse ayar menüsü. |
+| **/** | Basınç hassasiyetini açar / kapatır. | — |
+| **» «** | Dikey ayna modunu açar / kapatır. | Yatay ayna modunu açar / kapatır. |
+| **Export** | Dışa aktarım penceresini açar. | Gelişmiş dışa aktarım (FPS) menüsü. |
+| **Drawing** | Programın adı. `Ctrl + Q` menüsünü açar. | — |
 
-### Running the benchmark
+---
 
-**Tools > Audiobook Read-Along > Generate bug report > Run device benchmark**
+# SOUND
 
-The benchmark synthesizes five sentences of varying length (short dialogue, narrative prose, technical text, academic text, and short fragments) with each engine and model it finds. espeak-ng tests finish in seconds; Piper tests may take several minutes on slow devices like Kobo.
+**Ses düzenleme programı.** Dalga formu üzerinde kesme, silme ve kayıt yapar.
 
-A progress message is shown between engine runs. The screen may appear unresponsive during individual synthesis calls -- this is expected.
+<img width="1920" height="1047" alt="Ekran görüntüsü_2026-08-28_10-42-08" src="https://github.com/user-attachments/assets/33505066-7391-4be6-a0f7-0f3c17ae7406" />
 
-### Output
+| Buton | Sol tık | Sağ tık |
+| :--- | :--- | :--- |
+| **File** | Ses dosyalarını (`.wav`) veya `.sound` paketini içe aktarır. | — |
+| **Kaydet** (disk ikonu) | Geçerli sesi veya `.sound` paketini kaydeder. | — |
+| **Geri Al / Yinele** | Son işlemi geri alır / yineler (`Ctrl+Z`, `Ctrl+Shift+Z`). | — |
+| **Cut** | Oynatma başlığının bulunduğu yerden keser. | — |
+| **::** | Seçili alanın kalınlığındaki (ses düzeyi) tüm boşlukları otomatik siler. | — |
+| **Delete** | Seçili ses bölümlerini siler. | — |
+| **Play** | Oynatmayı başlatır / duraklatır. | — |
+| **Record** | Mikrofon kaydını başlatır / durdurur. | — |
+| **I** | Kayıt sonrası filtreleri açar / kapatır (kalıcı ayar). | — |
+| **Dalga ölçeği** (rakam) | Dalga formu genişliğini ayarlar (1–7). | — |
+| **Hız** | Oynatma hızını değiştirir (0,1x – 3x). | — |
+| **Kaydırma adımı** | Fare tekerleği ile kaydırma adımını ayarlar (0,1 sn – 30 sn). | — |
+| **/** | Geçici metin panelini açar / kapatır. | — |
+| **O** | Paneldeki metni ortalar / sola yaslar. | — |
+| **Yazı boyutu** (rakam) | Paneldeki yazı boyutunu ayarlar. | — |
+| **Export** | Sesi `WAV` olarak dışa aktarır. | Sesi metin ve ayarlarla birlikte `.sound` paketi olarak dışa aktarır. |
+| **Sound** | Programın adı. `Ctrl + Q` menüsünü açar. | — |
 
-When complete, a `.txt` report is saved to your device's root storage:
+> **Not:** Kayıt, Linux'ta ses motoru (PortAudio) ile, Windows/macOS'ta aynı motorun kendi sürümüyle yapılır. macOS'ta ilk kayıtta mikrofon izni istenir.
 
-| Platform | Report location |
-|----------|----------------|
-| Kobo | `/mnt/onboard/audiobook-benchmark-*.txt` |
-| Kindle | `/mnt/us/audiobook-benchmark-*.txt` |
-| Android | `/sdcard/audiobook-benchmark-*.txt` |
-| Linux | `~/audiobook-benchmark-*.txt` |
+---
 
-The report contains:
+# AI
 
-- Device info (platform, model, CPU cores, RAM, kernel)
-- Plugin version
-- Per-sentence synthesis time, audio duration, file size, and realtime factor for each engine/model
-- Aggregate totals and average realtime factor
+**Yapay hafıza.** SQLite tabanlı soru-cevap paketlerini yönetir; yanıtlara ses (`.mp3`, `.wav`), resim (`.png`, `.jpg`), video (`.mp4`) ve harici dosya ekleyebilirsiniz. Kayıtlı veriler üzerinde sohbet modunda arama yapılır.
 
-No book content, highlights, or personal data is included.
+<img width="1920" height="1043" alt="ai" src="https://github.com/user-attachments/assets/63637946-2309-4697-ba3b-3ac3395fff04" />
 
-### Example output
+| Buton | İşlevi |
+| :--- | :--- |
+| **File** | Veritabanı veya medya dosyalarını içeri aktarır / açar. |
+| **Kaydet** | Değişiklikleri, paketleri ve veritabanını kaydeder. |
+| **New** | Veri sayfasında yeni, boş bir soru-cevap paketi oluşturur. |
+| **Chat** | Sohbet (etkileşim ve arama) sayfasını açar. |
+| **Edit** | Veri yönetimi (soru-cevap paketleri) sayfasını açar. |
+| **X** | Sohbet ekranındaki mesajları temizler. |
+| **_** | Tam ekran / medya görünümünden çıkar. |
+| **Yazı boyutu** (rakam) | Metin boyutunu değiştirir (tıklama, menü veya tekerlek). |
+| **S** | Geçici `ai` çalışma klasörünü ve açık veri belleğini temizler. |
+| **Export** | Veri paketlerini ve bağlı medyayı dışa aktarır. |
+| **Ai** | Programın adı. `Ctrl + Q` menüsünü açar. |
 
-```
-=== Audiobook TTS Benchmark (v0.1.5.65) ===
-Generated: 2026-03-27T12:00:00Z
+---
 
-── Device ──
-  platform: kobo
-  model: Kobo Clara 2E
-  cpu_cores: 1
-  memory: 510396 kB
-  kernel: 4.1.15
+# MEDIA
 
-── Test sentences ──
-  [1] short_dialogue (57 chars)
-  [2] medium_narrative (268 chars)
-  [3] medium_technical (254 chars)
-  [4] long_academic (362 chars)
-  [5] short_fragments (79 chars)
+**Ses ve videolardan oluşan karma arşiv programı.** Zaman çizelgesinde parçaları keser, sıralar, kaydeder ve tek dosyaya birleştirir.
 
-── espeak-ng ──
-  short_dialogue          synth=   82ms  audio= 3200ms  size= 102444B  rt=0.03x
-  medium_narrative        synth=  310ms  audio=15800ms  size= 505244B  rt=0.02x
-  ...
+<img width="1920" height="1049" alt="M" src="https://github.com/user-attachments/assets/2aa5206d-dedb-4256-b859-ffb58721ae99" />
 
-── Piper danny-low  (size=15.8MB, sr=16000Hz) ──
-  short_dialogue          synth= 4200ms  audio= 3100ms  size=  99244B  rt=1.35x
-  medium_narrative        synth=18200ms  audio=16800ms  size= 537644B  rt=1.08x
-  ...
+| Buton | Sol tık | Sağ tık |
+| :--- | :--- | :--- |
+| **File** | Medya dosyalarını (video, ses, `.media` arşivi) içe aktarır. | — |
+| **Kaydet** (disk ikonu) | Projeyi hızlıca kaydeder (daha önce kaydedildiyse üzerine yazar, değilse "farklı kaydet" açar). | — |
+| **Geri Al / Yinele** | Son işlemi geri alır / yineler. | — |
+| **Play** | Seçili parçayı oynatır / duraklatır. | — |
+| **/** | Sıralı oynatmayı açar / kapatır (parçalar arası otomatik geçiş). | — |
+| **Cut** | Aktif parçayı oynatma başlığının bulunduğu yerden ikiye böler. | — |
+| **Delete** | Zaman çizelgesinde seçili parçayı siler. | — |
+| **Camera** | Kamera modunu açar: kamera + mikrofon kaydı (geliştirme aşamasında). | — |
+| **Sound** | Mikrofon ile ses kaydını başlatır / durdurur. | — |
+| **I** | Gürültü filtresini açar / kapatır (kalıcı ayar). | — |
+| **S** | `medya_cut` çalışma klasörünü temizler, zaman çizelgesini sıfırlar. | — |
+| **Seek aralığı** (açılır kutu) | Tekerlekle ileri / geri sarma adımını ayarlar (2 sn, 5 sn, 1 dk …). | — |
+| **Oynatma hızı** (açılır kutu) | Oynatma hızını değiştirir (0,5x, 1x, 2x …). | — |
+| **Export** | Bütün parçaları `.media` arşivi olarak dışa aktarır (proje kaydı). | Bütün zaman çizelgesini tek bir `.mkv` videoya render eder. |
+| **Media** | Programın adı. `Ctrl + Q` menüsünü açar. | — |
 
-=== End of Benchmark ===
-```
+> **Not:** Kamera ve mikrofon kaydı Linux'ta C++ kaydedici ile, Windows/macOS'ta OpenCV + PortAudio + FFmpeg ile yapılır. İlk açılışta kamera / mikrofon izni istenir.
 
-A realtime factor below 1.0x means synthesis is faster than playback (good). Above 1.0x means the user will hear pauses between sentences while the engine catches up.
+---
 
-### Sharing your results
+# REC
 
-Attach the report file to a [GitHub issue](https://github.com/stradichenko/audiobook.koplugin/issues) or include it in a bug report. Benchmark data from different devices helps the project tune batch sizes, choose default voices, and set realistic expectations for each platform.
+**Ekran ve ses kaydetme programı.** Kayıt, arka planda parça parça (`s1.mkv`, `s2.mkv` …) alınır; **Export** hepsini sırayla birleştirir.
 
-## Android support
+<img width="1918" height="1046" alt="r1" src="https://github.com/user-attachments/assets/9e91a992-8da1-4b17-b614-d4e0e4f235fa" />
 
-Android TTS is supported via a JNI bridge to the device's **system** `TextToSpeech` engine (Google, Samsung, SherpaTTS, ...). No Termux and no root required. The plugin does **not** run the bundled Piper / espeak-ng binaries on Android.
+| Buton | İşlevi |
+| :--- | :--- |
+| **File** | Harici bir video (`.rec`, `.mp4`, `.mkv`) veya ses (`.wav`) dosyasını oynatıcıya yükler. |
+| **Camera** | Yüzen kamera penceresini açar; pencere ekran kaydına girer (geliştirme aşamasında). |
+| **Windows** | Ekran kaydı alınıp alınmayacağını belirler. Aktifken rengi değişir; yalnızca ses kaydı için kapatılabilir. |
+| **Sound** | Mikrofon / sistem sesi kaydını açar / kapatır. Linux'ta EasyEffects ve varsayılan PulseAudio kaynaklarını otomatik algılar. |
+| **I** | Gürültü engelleme ve ses filtresi zincirini açar / kapatır (dışa aktarırken uygulanır). |
+| **S** | Her şeyi siler ve kapatır. |
+| **Kalınlık** (rakam) | Yüzen pencerenin kalınlığını (30–50 px) ayarlar.<br>• Tekerlek: kalınlık<br>• Sol tık: yüzen pencereyi varsayılan konuma getirir<br>• Sağ tık: mevcut konumu varsayılan yapar |
+| **/** | Klavye tuşlarını ve fare tıklamalarını ekranda gösteren yüzen siyah paneli açar / kapatır. |
+| **Z** | Ekrandaki canlı kayıt süresi panelini açar / kapatır. |
+| **Süre** (açılır menü) | Kayıt limiti (1–30 dk): süreye ulaşınca kayıt otomatik duraklar. |
+| **Segment** (açılır menü) | Arka planda kaç saniyede bir yeni parça dosyası oluşacağını belirler. |
+| **Play / Pause** | Kaydı veya oynatmayı başlatır / duraklatır (genel kısayol: `Ctrl + M`). |
+| **X** | Açık dosya oynatma çubuğunu kapatır, oynatıcıyı sıfırlar. |
+| **Segment X** (menü) | Biriken kayıt parçalarını listeler; tek tek veya **Hepsi** ile siler. |
+| **Export** | Bütün parçaları sırayla birleştirir, isteğe bağlı ses filtresini uygular, MKV / WAV olarak kaydeder. |
+| **Rec** | Programın adı. `Ctrl + Q` menüsünü açar. |
 
-| Feature | Status |
-|---------|--------|
-| Plugin loads in KOReader | ![Works](https://img.shields.io/badge/-works-brightgreen) |
-| Text parsing & highlighting | ![Works](https://img.shields.io/badge/-works-brightgreen) |
-| Android system TTS | ![Works](https://img.shields.io/badge/-works-brightgreen) Via JNI bridge to `TextToSpeech` API |
-| Audio playback | ![Works](https://img.shields.io/badge/-works-brightgreen) Via Android `MediaPlayer` |
-| Bundled espeak-ng / Piper / HuggingFace `.onnx` | ![No](https://img.shields.io/badge/-not%20supported-red) Linux/glibc binaries, use SherpaTTS instead |
-| High-quality neural voices | ![Works](https://img.shields.io/badge/-works-brightgreen) Via a system engine such as [SherpaTTS](https://f-droid.org/packages/org.woheller69.ttsengine/) |
+> **Not:** Eski bilgisayarlarda çalışacak şekilde tasarlanmıştır; süre sınırı vardır. Büyük dosyalar oluşturmadan önce kendi bilgisayarınızda deneyin.
+>
+> **Windows / macOS:** ekran kaydı FFmpeg ile (`gdigrab` / `avfoundation`), kamera OpenCV ile yapılır. Canlı ekran önizlemesi ve ses seviyesi paneli yoktur; hoparlör sesini kaydetmek için sanal ses aygıtı (Windows: Stereo Mix / VB-Cable, macOS: BlackHole) gerekir. macOS'ta **Ekran Kaydı**, Kamera ve Mikrofon izinleri istenir.
 
-### Setup
+<img width="1920" height="1045" alt="R" src="https://github.com/user-attachments/assets/bbb4c6c4-e8c5-41cf-9273-8ffed6543335" />
 
-The pre-built release from [GitHub Releases](https://github.com/stradichenko/audiobook.koplugin/releases/latest) includes `android/tts_helper.dex`. Just unzip and copy:
+---
 
-1. Download the release zip and extract it.
-2. Copy `audiobook.koplugin/` to `/sdcard/koreader/plugins/`.
-3. Restart KOReader. The plugin auto-detects Android and initializes the JNI bridge to the device's TTS engine.
+# COPY
 
-If you cloned the repo instead of using a release, build the `.dex` first (requires Android SDK + Java):
+**Not defteri programı.** Renkli notlar, görsel / metin galerileri ve PDF sayfaları saklar.
+
+<img width="1920" height="1043" alt="N" src="https://github.com/user-attachments/assets/34d80842-0917-4ae5-8d5c-5f28b30d7e00" />
+
+| Buton | İşlevi |
+| :--- | :--- |
+| **File** | `.copya` proje dosyasını açar. |
+| **Kaydet** (disk ikonu) | Projeyi kaydeder (dosya yoksa "farklı kaydet" açar). |
+| **+** | Yeni boş not ekler. |
+| **Galeri** | Görselleri, `.txt` ve `.txr` dosyalarını seçip galeri notu olarak ekler. |
+| **Belge** | `PDF` veya `PNF` (Drawing) dosyasını sayfa sayfa galeri notu olarak içe aktarır. |
+| **#** (sayfa numarası) | Genişletilmiş galerideki öğeler arasında gezinme menüsü. |
+| **I** | Otomatik kaydırmayı (okuma modu) başlatır / durdurur. |
+| **Hız** (rakam) | Otomatik kaydırma hızı menüsü. |
+| **Boyut** (rakam) | Belge modunda sayfa boyutunu ayarlar. |
+| **X** | Genişletilmiş notu siler. |
+| **_** | Genişletilmiş notu küçültür. |
+| **/** | Notun içeriğini panoya kopyalar (resimde dosya yolu, metinde düz metin). |
+| **Export** | Projeyi `.copya` arşivi olarak dışa aktarır. |
+| **Copy** | Programın adı. `Ctrl + Q` menüsünü açar. |
+
+---
+
+# FILTER
+
+**Ses ve video filtreleme.** Spektral gürültü azaltma, akıllı VAD (ses aktivite tespiti) ve çok katmanlı filtreleme ile ses ve video dosyalarını işler.
+
+- **x1 filtresi (spektral temizleme):** 2 aşamalı gürültü azaltma; güç ayarı 1–9.
+- **x2 filtresi (akıllı alt frekans susturma):** 30–200 Hz arasında belirlenen frekansın altındaki gürültü bölgelerini susturur.
+- **Gürültü profilleri:** Kullanıcının oluşturduğu hedefli profiller (en fazla 8).
+- **Video desteği:** Videodan ses çıkarır, filtreler ve işlenmiş sesi videoyla birleştirir (FFmpeg).
+- **Ses düzenleme paneli:** Genel ses, arka plan müziği şiddeti, pitch, hız, bitiş sonrası müzik süresi.
+- **Kalıcı müzik:** Arka plan müziğini kaydedip her seferinde otomatik ekler.
+- **5 saniyelik önizleme** ve son 5 işlemi gösteren **rapor paneli**.
+
+<img width="1920" height="1048" alt="F" src="https://github.com/user-attachments/assets/c6763870-86d7-4973-b307-0e94eecca578" />
+
+| Buton | Sol tık | Sağ tık |
+| :--- | :--- | :--- |
+| **File** | Ses veya video dosyası yükler. | — |
+| **::** | Gürültü profili için ses dosyası seçer (en fazla 8). | — |
+| **/** | Ses düzenleme panelini açar / kapatır. | — |
+| **Process** | Aktif filtreleri seçili dosyaya uygular. | — |
+| **Reset** | Panel açıksa ayarları sıfırlar; kapalıysa bütün profilleri varsayılana döndürür (x1 güç = 5, x2 kesim = 75 Hz). | — |
+| **Play** | Filtrelenmiş sesin 5 saniyelik önizlemesini çalar; tekrar tıklayınca duraklar. | — |
+| **Müzik** | Arka plan müziği seçer (geçici). | Seçili müziği kalıcı yapar veya iptal eder. |
+| **Export** | Filtrelenmiş sesi (WAV, MP3, FLAC) veya videoyu (orijinal format) kaydeder. | — |
+
+> **Not:** Filter, **Sound, Media ve Rec** ile bağlantılıdır. Bu üç programın üst barındaki **I** ikonunu açarsanız, ses kaydı alınırken dosya filtrelenir.
+
+---
+
+# CONVERTER
+
+**Dosya format değiştirme programı.** Ses, video, PDF ve resim dosyalarını dönüştürür.
+
+<img width="1920" height="1027" alt="C" src="https://github.com/user-attachments/assets/87a96bb1-d300-48c4-a062-9aaf4cf3e815" />
+
+| Kontrol | İşlevi |
+| :--- | :--- |
+| **File** | Dönüştürülecek dosyayı (ses, video, PDF, resim) seçer. |
+| **Convert** | Seçilen dosyayı, aşağıdaki ayarlara göre dönüştürür. |
+| **Reset** | Bütün dönüştürme ayarlarını varsayılana döndürür. |
+| **Export** | Çıktı dosyasını seçilen konuma kaydeder. |
+| **Format** | Çıktı formatı (`.wav`, `.mp3`, `.mp4`, `.pdf`, `.jpg` …). |
+| **Frekans değiştir / Yeni frekans (Hz)** | Ses örnekleme frekansını değiştirmeyi açar / kapatır; hedef Hz değeri girilir. |
+| **Ses hızı** | 0,10x – 4,0x. |
+| **Ses perdesi** | −6 ile +6 ton arası. |
+| **Ses efekti** | Normalleştir, Sıkıştır, Filtre, Fade, Kaydırma vb. |
+| **Kapak resmi seç** | Sesi videoya çevirirken kullanılacak kapak resmini seçer. |
+| **Video: renkleri ters çevir / gri ton / sesi sil** | Evet seçilirse çıktıya uygulanır. |
+| **Harici ses ekle (Sync)** | Videoya ana ses olarak eklenecek harici ses dosyasını seçer. |
+| **PDF / Resim: ters çevir, gri ton** | Evet seçilirse çıktıya uygulanır. |
+| **Resim çözünürlüğü** | −5 = %25 küçült, 0 = orijinal, +5 = %250 büyüt. |
+
+### Lisans
+
+GNU Genel Kamu Lisansı sürüm 3 veya (tercihinize bağlı) daha yenisi. Ayrıntı `kavram.py` dosyasının başındadır.
+
+[⬆ Başa dön](#kavram) · [🇬🇧 English](#english)
+
+---
+
+# English
+
+**Kavram** is a free, open-source archive platform that brings educational and media work under one roof.
+
+It offers text, drawing, sound, video, screen recording and notes in a single system. You can edit what you create, link the pieces together, and build mind maps in **SPHERE** that are archived in encrypted form.
+
+Kavram is not only a set of ready-made programs. You can also plug in programs you develop yourself, so it is designed less as a classic application bundle and more as a platform on which you build your own working environment.
+
+**10 integrated programs + an extensible program system.**
+
+**On this page:** [Workflow](#workflow) · [Programs](#programs) · [Installation](#installation) · [Structure](#structure) · [Sphere](#sphere-home-screen) · [Text](#text-text-editor) · [Drawing](#drawing-drawing-and-animation) · [Sound](#sound-audio-editor) · [AI](#ai-artificial-memory) · [Media](#media-mixed-archive) · [Rec](#rec-recorder) · [Copy](#copy-notes) · [Filter](#filter-audio-filter) · [Converter](#converter-format-converter)
+
+## Workflow
+
+1. **Create files:** the required files are produced in the main programs.
+2. **Map them:** the produced files are laid out on the home screen as a map.
+3. **Export:** the mind map is exported in encrypted form (`Export`).
+
+> **Tip:** you can share the file you create without a password, or sell the access password.
+
+> **Important:** make sure any `.kitap` file you download comes from a trusted source.
+
+## Programs
+
+| Program | What it is for |
+| --- | --- |
+| **SPHERE** | Home screen |
+| **TEXT** | Text editing |
+| **DRAWING** | Drawing and animation |
+| **SOUND** | Audio editing |
+| **AI** | Artificial memory |
+| **MEDIA** | Mixed audio + video archive |
+| **REC** | Screen and audio recording |
+| **COPY** | Notebook |
+| **FILTER** | Audio filtering |
+| **CONVERTER** | Format conversion |
+
+Rules shared by all programs:
+
+- Hold the mouse over any button for **0.6 seconds** and a black box tells you what it does.
+- In the top bar, the right-most button (the program name: *Text*, *Sound*, *Rec* …) opens the `Ctrl + Q` menu; the **Export** next to it exports. When the window gets narrow these two buttons drop to a second row.
+- Buttons are 30×30 (icon) or 90×30 (text); if the text does not fit, the button widens by itself.
+
+---
+
+## Installation
+
+> **Note:** Linux Mint XFCE is the recommended platform.
+
+Run the commands in the Kavram folder (next to `kavram.py`). Every command performs these steps: **system packages → virtual environment (venv) → Python libraries → C++ engines → packaging (`dist/`) → launch.** The package is built **on its own operating system** (PyInstaller does not cross-compile). The first installation needs internet access and can take 10–30 minutes.
+
+| System | Command | Resulting package |
+| --- | --- | --- |
+| **Linux** (detects the distro itself) | `bash baslat_linux.sh` | `dist/kavram/kavram` and `.tar.gz` |
+| Debian · Ubuntu · Mint · Pop!_OS · Kali | `bash kurulum_deb.txt` | same |
+| Arch · Manjaro · EndeavourOS · CachyOS | `bash kurulum_arch.txt` | same |
+| Fedora · Nobara · AlmaLinux · Rocky | `bash kurulum_fedora.txt` | same (RPM Fusion is added automatically) |
+| openSUSE Tumbleweed / Leap | `bash kurulum_opensuse.txt` | same (Packman is added automatically) |
+| Void Linux | `bash kurulum_void.txt` | same |
+| **Windows 10 / 11** | double-click `baslat_win.bat` | `dist\kavram\kavram.exe`, `.zip`, desktop shortcut |
+| **macOS 11+** (Apple Silicon / Intel) | double-click `baslat_mac.command` (or `bash kurulum_mac.txt`) | `dist/Kavram.app`, `.dmg`, `.zip` |
+
+You can also **paste** the Linux scripts into a terminal.
+
+| System | Status |
+| --- | --- |
+| **Linux** | Supported. The package was built and launch-verified. |
+| **Windows 10/11** | **Experimental.** Code and scripts are ready; tested by simulation on Linux, not yet validated on real Windows. |
+| **macOS 11+** | **Experimental.** Same: not yet validated on a real Mac. |
+
+> If a step fails, please share the output as an *issue*. The Fedora, openSUSE and Void scripts have not yet been tried on their own distributions either (if a package cannot be installed, the script warns and continues). Alpine and NixOS are not supported.
+
+On Windows/macOS you can check that screen, microphone and camera capture work after installation with this command (it lists the devices, makes a short trial recording and prints each step as `OK` / `HATA`, i.e. error):
 
 ```bash
-cd audiobook.koplugin/android/
-./build-dex.sh
+venv\Scripts\python kayit_testi.py      # Windows
+./venv/bin/python kayit_testi.py        # macOS
 ```
 
-### How it works
+<img width="1920" height="1049" alt="3" src="https://github.com/user-attachments/assets/0b8b71af-737a-4387-a516-77c0fa217e6c" />
 
-The plugin loads a small `.dex` file (`tts_helper.dex`, ~4KB) at runtime via Android's `DexClassLoader`. This helper wraps `android.speech.tts.TextToSpeech` with a polling-friendly API (since LuaJIT cannot implement Java callback interfaces). Synthesis produces standard WAV files that feed into the same pipeline used by espeak-ng and Piper.
+## Structure
 
-Audio playback uses Android's `MediaPlayer` instead of `aplay` or GStreamer. Pause, resume, and stop all work through the MediaPlayer API.
-
-For the full technical analysis, see [docs/ANDROID_TTS.md](docs/ANDROID_TTS.md).
-
-### Limitations
-
-- Word timing is estimated (Android TTS does not provide per-word callbacks when synthesizing to file). The plugin underlines the spoken sentence as a contiguous phrase instead of chasing estimated word positions.
-- First sentence may have a brief delay while the TTS engine initializes
-- The plugin uses whatever engine Android has as **preferred TTS**. Installing SherpaTTS is not enough until you set it as that preferred engine.
-
-### High-quality voices on Android (SherpaTTS)
-
-On Android the plugin never loads the HuggingFace Piper models shipped in `audiobook.koplugin/piper/`. Those `.onnx` files need the Linux Piper binary (glibc). Android uses Bionic, so that binary cannot start.
-
-What *does* work is the system `TextToSpeech` API. Any app that registers as an Android TTS engine (Google, Samsung, or a neural engine such as **SherpaTTS**) can then speak for KOReader.
-
-SherpaTTS runs Piper / VITS models *inside Android*, offline, with quality close to Piper on Kobo. The example below uses **`fr-FR-miro-high`**. The same steps apply to any other language or model (English lessac, German thorsten, ...).
-
-#### 1. Install SherpaTTS
-
-1. On the tablet, install **[SherpaTTS](https://f-droid.org/packages/org.woheller69.ttsengine/)** (`org.woheller69.ttsengine`) from [F-Droid](https://f-droid.org/). That is the recommended source (signed, updates).
-2. Open **SherpaTTS** once so Android registers it as a TTS engine.
-
-Skip this step if SherpaTTS is already installed.
-
-#### 2. Install the voice inside SherpaTTS (not in the plugin)
-
-Do **not** copy `fr_FR-miro-high.onnx` into `koreader/plugins/audiobook.koplugin/piper/`. The plugin will ignore it on Android.
-
-1. Open **SherpaTTS**.
-2. Open **Manage Languages**.
-3. Choose **French** (or the language you need).
-4. Download / enable **`fr-FR-miro-high`** (the app may show it as `miro` + quality `high`).
-5. If several French models are installed, tap **miro-high** so it is the active model for French.
-6. Optional: play the in-app preview.
-
-Internet is only needed for this download. After that, synthesis is offline.
-
-You already have `fr-FR-miro-high` installed? Confirm it is listed and selected in **Manage Languages**, then go to step 3.
-
-#### 3. Make SherpaTTS the *system* default engine (required)
-
-Android allows only **one** preferred TTS engine. KOReader always talks to that engine. If Google TTS is still preferred, you will keep hearing Google even though Miro is installed in SherpaTTS.
-
-**Onyx Boox** ([official path](https://help.boox.com/hc/en-us/articles/360031058312-How-could-I-download-new-TTS-engine-on-BOOX-device-and-use-it-as-the-default-TTS-on-our-device)):
-
-1. Open the Android **Settings** app (not KOReader, not NeoReader).
-2. Go to **Language & input → Text-to-speech (TTS) output**.
-   On some firmware this is **Language → Voice → Text-to-speech output**.
-3. Under **Preferred engine**, select **SherpaTTS**.
-4. Set **Language** to **French (France)** if the list offers it.
-5. If a gear icon appears next to SherpaTTS, open it and pick the Miro / `fr-FR` voice.
-6. Tap **Listen to an example**. You should hear the neural Miro voice, not Google.
-
-**Other Android devices:** **Settings → System → Languages & input → Text-to-speech**. Same: preferred engine = SherpaTTS, then language / voice.
-
-Fully **quit KOReader** (swipe it away from Recents) and reopen it so it reconnects to the new engine. A plugin reload is not enough if TextToSpeech was already created with Google.
-
-> Changing the preferred engine is system-wide: TalkBack, NeoReader, navigation apps, and other readers will also use SherpaTTS.
-
-#### 4. Use it in this plugin
-
-1. Open a book in KOReader.
-2. Start TTS: long-press a word → **Read aloud from here**, or **Tools → Audiobook Read-Along → Start reading from current page**.
-3. On the playback bar, tap the centre to expand the player (or open **⚙**).
-4. **TTS settings → Voice → French**.
-   - **Auto (book language)** is enough when the EPUB metadata language is French (`fr` / `fr-FR`).
-   - You can also set the voice from **Tools → Audiobook Read-Along → Voice settings → Voice**.
-
-On Android the **Voice** menu lists the voices installed in the system engine and sends the pick to it. It does **not** download HuggingFace models into the plugin. With SherpaTTS as preferred engine and `fr-FR-miro-high` installed, French voices map to Miro.
-
-#### 5. Checks if it is still the wrong voice
-
-| You hear... | Cause | Fix |
-|-----------|--------|-----|
-| Google / Samsung / robotic voice | SherpaTTS is not the preferred engine | Repeat step 3, then fully quit KOReader |
-| English on a French book | Language not set to `fr-FR` | Overlay **⚙ → Voice → French**, or Auto if the book language is French |
-| No speech / "No TTS engine found" | `tts_helper.dex` missing, or no TTS engine at all | Use a release zip; confirm SherpaTTS opens |
-| Model in `audiobook.koplugin/piper/` but unused | Expected on Android | Install the model in SherpaTTS instead (step 2) |
-
-#### Other engines
-
-SherpaTTS from F-Droid is the usual choice. Alternatives:
-
-| Engine | Distribution | Notes |
-|--------|--------------|-------|
-| [SherpaTTS](https://f-droid.org/packages/org.woheller69.ttsengine/) | F-Droid | Piper / VITS via Sherpa-ONNX. Built-in model picker. |
-| [VoxSherpa TTS](https://github.com/CodeBySonu95/VoxSherpa-TTS) | GitHub APK | Kokoro 82M and custom Sherpa-ONNX `.onnx` import. |
-| [Sherpa-ONNX engine APKs](https://k2-fsa.github.io/sherpa/onnx/tts/apk-engine.html) | k2-fsa | One pre-bundled voice per APK. |
-
-Preview Piper-family voices (including Miro) at [piper-samples](https://rhasspy.github.io/piper-samples/) or the [k2-fsa TTS space](https://huggingface.co/spaces/k2-fsa/text-to-speech).
-
-## Building from source
-
-The `package-for-kobo.sh` script cross-compiles the bundled engines for ARM (espeak-ng, sanoTTS, wav-play, ffmpeg) and bundles the plugin into a ready-to-deploy directory. It targets ARMv7 and works for both Kobo and PocketBook. It requires [Nix](https://nixos.org/download) for the cross-compilation toolchain.
-
-```bash
-# Plugin + espeak-ng + sanoTTS (sanoTTS is bundled by default)
-bash package-for-kobo.sh
-
-# Plugin + espeak-ng + sanoTTS + Piper neural TTS
-bash package-for-kobo.sh --with-piper
-
-# Plugin + espeak-ng only
-bash package-for-kobo.sh --no-sanotts
-
-# Use a specific Piper voice (default: en_US-danny-low)
-bash package-for-kobo.sh --piper-voice en_US-ryan-low
+```text
+kavram/
+├── kavram.py              Core: program loader and editor switcher (Ctrl + Q)
+├── kavram_ui.py           Shared design: buttons, top bar, 0.6 s tooltips
+├── kavram_platform.py     Linux / Windows / macOS differences
+├── kavram_capture.py      Windows/macOS recording backend (FFmpeg + OpenCV + PortAudio)
+├── kavram.spec            Packaging recipe (PyInstaller)
+├── baslat_linux.sh · baslat_win.bat · baslat_mac.command     Per-OS launchers
+├── kurulum_*.txt          Install scripts per distribution / system
+├── text/ drawing/ sound/ media/ rec/ sphere/ ai/ copy/ filter/ converter/ file_manager/ terminal/
+│       └── in each program folder:  rec.py (Linux) · rec_win.py (Windows) · rec_mac.py (macOS)
+└── ikon/                  Application icon
 ```
 
-The output is placed in `kobo-tts-bundle/audiobook.koplugin/`. Copy it to your device:
+- **Runtime:** `kavram.py` starts, detects the operating system and loads that system's file for each program (falling back to the default `.py`). Every program lives in its own folder, together with its C++ engines and `derleme.txt`.
+- **Packaging:** `kavram.spec` collects only the current system's files and produces the package in `dist/`.
+- **C++ engines:** the sound, filter and converter engines are built on every system. The media and screen-recording engines (GStreamer / PipeWire / X11) exist only on Linux; on Windows/macOS a Python backend based on FFmpeg, OpenCV and PortAudio takes their place.
 
-```bash
-scp -P 2222 -r kobo-tts-bundle/audiobook.koplugin root@<kobo-ip>:/mnt/onboard/.adds/koreader/plugins/
+---
+
+# Sphere: home screen
+
+The home screen is where mind maps are archived in encrypted form.
+
+<img width="1918" height="1047" alt="s1" src="https://github.com/user-attachments/assets/4e6782df-e53e-4245-a70f-131ed9d720e4" />
+
+<img width="1920" height="1047" alt="sphere" src="https://github.com/user-attachments/assets/bccf70d7-1060-4ec4-a2be-36493d3fe0f6" />
+
+## Button functions
+
+| Button | Function |
+| --- | --- |
+| **File** | Imports an archive and adds a tile (file). |
+| **Undo / Redo** | Reverts or re-applies the actions you made. |
+| **+** | Adds a tile. |
+| **List** | Opens the location list of the links. |
+| **Terminal** | Opens the terminal for commands. |
+| **/** | Shows / hides the grid in the background. |
+| **Export** | **Left click:** creates an XZ file (smaller, but takes longer to create).<br>**Right click:** saves as GZ (larger, but created faster).<br>The file is saved encrypted with the `.kitap` extension. |
+| **Sphere** | In every program it sits at the far right of the top bar under the program's name. Opens the `Ctrl + Q` menu. |
+
+### Terminal commands
+
+**1. `reset`** — wipes everything completely.
+
+**2. `ap image-path`** — changes the wallpaper.
+
+```text
+ap /home/lts/Pictures/resim4.png
 ```
 
-### Installing the Piper binary manually
+### Adding external programs to the system
 
-If you don't want to use the packaging script, you can assemble the Piper runtime yourself:
+**3. `name program-path`** — adds a program to the **lower** part of the `Ctrl + Q` menu (for helper programs).
 
-1. Download the **armv7l** binary from [Piper releases (2023.11.14-2)](https://github.com/rhasspy/piper/releases/tag/2023.11.14-2).
-2. Extract `piper`, its `lib/` directory, and `espeak-ng-data/` into `audiobook.koplugin/piper/`.
-3. Download a voice model (`.onnx` + `.onnx.json`) as described in [Downloading additional voices](#downloading-additional-voices) and place them in the same `piper/` directory.
+```text
+Zaman /home/lts/Kavram/Programlar/Zaman/Zaman
+```
 
-> The [rhasspy/piper](https://github.com/rhasspy/piper) repository was archived in October 2025. The binaries on the releases page still work and are what this plugin ships. The project continues under [OHF-Voice/piper1-gpl](https://github.com/OHF-Voice/piper1-gpl) but those newer builds have not been tested with this plugin.
+<img width="1920" height="1049" alt="Z" src="https://github.com/user-attachments/assets/a569dba7-1714-42cd-8502-16d0bd917692" />
 
-## To Do
+**4. `k name program-path`** — adds a program to the **upper** part of the `Ctrl + Q` menu (for main programs). Adding files is also possible.
 
-- Real word-level timing ships for the sanoTTS pq8, f32 and int8 engines,
-  which read the duration student's own per-phoneme counts back out of the
-  synthesizer (see [sanotts/README.md](sanotts/README.md)), and per-character
-  timing ships for sanoTTS-jp. The espeak, Piper, Android and nano paths
-  still estimate timing from character counts
-- Add PDF/DjVu highlight support (currently EPUB only)
-- Integrate more TTS backends
-- Improve accessibility
-- Support whole audiobook production with hash-based verification
+```text
+k Blender /home/lts/blender-5.2.0-linux-x64/blender
+```
 
-## License
+<img width="1920" height="1050" alt="bl" src="https://github.com/user-attachments/assets/2749222e-e76c-43ec-b58f-aa33c5370315" />
 
-Copyright 2025-2026 gespitia - AGPL-3.0. See [LICENSE](LICENSE).
+> **Important:** Kavram works like a small operating system, so when the main program is closed, every program attached to it closes automatically. For example Blender asks you to save before closing, but if you close Kavram, Blender closes without asking. Back up your files beforehand to avoid losing data.
 
-| Bundled component | License |
-|-------------------|---------|
-| [KOReader](https://github.com/koreader/koreader) | AGPL-3.0 |
-| [espeak-ng](https://github.com/espeak-ng/espeak-ng) | GPL-3.0+ |
-| [Piper](https://github.com/rhasspy/piper) | MIT |
-| [Piper voices](https://huggingface.co/rhasspy/piper-voices) | MIT |
-| [sanoTTS](https://github.com/ampixa/sanoTTS) (runtime + voice blobs) | MIT |
-| [sanoTTS-jp](https://github.com/ayutaz/sanoTTS-jp) (runtime binary, vendored core; weights and dictionary are user downloads) | MIT (core + OpenJTalk subset: modified BSD) |
-| glibc (bundled .so) | LGPL-2.1 |
+### Things to watch out for
+
+1. **Back up your files.** The chance of data loss is very low, but it is not zero.
+2. **The `reset` command** wipes everything when typed in the terminal.
+3. **`Ctrl + S`** works in the 7 main programs other than Sphere: it closes the open program and returns to the home screen. **It saves nothing.** For quick saving use the icon next to the **File** button in each editor. In Sphere that icon makes the current layout the default, so everything comes back the same way when the program is reopened.
+
+---
+
+# Text: text editor
+
+**Text editing program.** Creates and formats rich-text documents; organizes notes and code blocks.
+
+<img width="1920" height="1049" alt="T1" src="https://github.com/user-attachments/assets/665de852-5ba9-4185-b21a-39a42a75a2bc" />
+
+| Button | Function |
+| :--- | :--- |
+| **File** | Opens the file open / import window. |
+| **Save** (disk icon) | Saves the open document. |
+| **Undo / Redo** | Goes back or forward in the edit history. |
+| **Font size** (number) | Click for the size list; the mouse wheel also changes it. |
+| **O** | Centers the typed lines (on / off). |
+| **A** | Makes the text bold (on / off). |
+| **Color** | Opens the text-color panel; chosen colors appear as HEX codes. |
+| **/** | Shows / hides the symbol panel. |
+| **I** | Starts / stops auto-scroll (reading mode). |
+| **Speed** (number) | Sets the scroll speed (the wheel also changes it). |
+| **Terminal** | Runs special delete commands (e.g. deleting a language or character group). |
+| **Search box, search, ↑, ↓** | Searches the text; moves forward / back between the matches. |
+| **Export** | Exports the document. |
+| **Text** | The program name. Opens the `Ctrl + Q` menu. |
+
+---
+
+# Drawing: drawing and animation
+
+**Drawing and animation program.** Offers page-by-page drawing, layers, color mixing, a grid and frame-by-frame animation.
+
+<img width="1920" height="1050" alt="d1" src="https://github.com/user-attachments/assets/f4d11e07-ac0c-4ff9-b1f0-672a7c87cf5c" />
+
+| Button | Left click | Right click |
+| :--- | :--- | :--- |
+| **File** | Imports an image or project file. | Adds a reference image. |
+| **Save** | Saves the project. | — |
+| **Page number** | Opens the page menu (the wheel moves between pages). | — |
+| **+** / **−** | Adds a new page / deletes the current page. | — |
+| **Undo / Redo** | Reverts / re-applies the last action. | — |
+| **Pen style** | Changes the brush style. | — |
+| **O** | Turns navigation mode on / off. | Opens the canvas size / resolution window. |
+| **G** | Shows / hides the reference image. | Reference opacity and layer-position menu. |
+| **Mix angle** | Mix-angle menu (the wheel also changes it). | Mix-mode menu. |
+| **Color** | Opens the color-selection menu. | — |
+| **Eraser** | Turns eraser mode on / off. | Changes the background color. |
+| **R:** | Opens the brush / eraser size menu. | — |
+| **Drawing** | Opens the layer menu. | — |
+| **#** | Pins the active layer on top. | — |
+| **lm** | Turns Lazy Mouse on / off (slowed mouse for smooth lines). | Lazy Mouse settings menu. |
+| **/** | Turns pressure sensitivity on / off. | — |
+| **» «** | Turns vertical mirror mode on / off. | Turns horizontal mirror mode on / off. |
+| **Export** | Opens the export window. | Advanced export (FPS) menu. |
+| **Drawing** | The program name. Opens the `Ctrl + Q` menu. | — |
+
+---
+
+# Sound: audio editor
+
+**Audio editing program.** Cuts, deletes and records on a waveform.
+
+<img width="1920" height="1047" alt="Ekran görüntüsü_2026-08-28_10-42-08" src="https://github.com/user-attachments/assets/33505066-7391-4be6-a0f7-0f3c17ae7406" />
+
+| Button | Left click | Right click |
+| :--- | :--- | :--- |
+| **File** | Imports audio files (`.wav`) or a `.sound` package. | — |
+| **Save** (disk icon) | Saves the current audio or `.sound` package. | — |
+| **Undo / Redo** | Reverts / re-applies the last action (`Ctrl+Z`, `Ctrl+Shift+Z`). | — |
+| **Cut** | Cuts at the playhead. | — |
+| **::** | Automatically deletes every gap with the thickness (volume level) of the selected area. | — |
+| **Delete** | Deletes the selected audio sections. | — |
+| **Play** | Starts / pauses playback. | — |
+| **Record** | Starts / stops microphone recording. | — |
+| **I** | Turns post-recording filters on / off (persistent setting). | — |
+| **Waveform scale** (number) | Sets the waveform width (1–7). | — |
+| **Speed** | Changes the playback speed (0.1x – 3x). | — |
+| **Scroll step** | Sets the mouse-wheel scroll step (0.1 s – 30 s). | — |
+| **/** | Shows / hides the temporary text panel. | — |
+| **O** | Centers / left-aligns the text in the panel. | — |
+| **Font size** (number) | Sets the font size in the panel. | — |
+| **Export** | Exports the audio as `WAV`. | Exports the audio together with the text and settings as a `.sound` package. |
+| **Sound** | The program name. Opens the `Ctrl + Q` menu. | — |
+
+> **Note:** Recording uses the sound engine (PortAudio) on Linux, and the same engine's own build on Windows/macOS. macOS asks for microphone permission on the first recording.
+
+---
+
+# AI: artificial memory
+
+**Artificial memory.** Manages SQLite-based question-answer packets; you can attach audio (`.mp3`, `.wav`), images (`.png`, `.jpg`), video (`.mp4`) and external files to the answers. Search runs over the stored data in chat mode.
+
+<img width="1920" height="1043" alt="ai" src="https://github.com/user-attachments/assets/63637946-2309-4697-ba3b-3ac3395fff04" />
+
+| Button | Function |
+| :--- | :--- |
+| **File** | Imports / opens a database or media files. |
+| **Save** | Saves changes, packets and the database. |
+| **New** | Creates a new, empty question-answer packet on the data page. |
+| **Chat** | Opens the chat (interaction and search) page. |
+| **Edit** | Opens the data-management (question-answer packets) page. |
+| **X** | Clears the messages on the chat screen. |
+| **_** | Leaves the full-screen / media view. |
+| **Font size** (number) | Changes the text size (click, menu or wheel). |
+| **S** | Clears the temporary `ai` working folder and the open data memory. |
+| **Export** | Exports the data packets and the linked media. |
+| **Ai** | The program name. Opens the `Ctrl + Q` menu. |
+
+---
+
+# Media: mixed archive
+
+**Mixed archive program made of audio and video.** Cuts, orders, saves and merges pieces into one file on a timeline.
+
+<img width="1920" height="1049" alt="M" src="https://github.com/user-attachments/assets/2aa5206d-dedb-4256-b859-ffb58721ae99" />
+
+| Button | Left click | Right click |
+| :--- | :--- | :--- |
+| **File** | Imports media files (video, audio, `.media` archive). | — |
+| **Save** (disk icon) | Saves the project quickly (overwrites if it was saved before, otherwise opens "save as"). | — |
+| **Undo / Redo** | Reverts / re-applies the last action. | — |
+| **Play** | Plays / pauses the selected piece. | — |
+| **/** | Turns sequential playback on / off (automatic hand-over between pieces). | — |
+| **Cut** | Splits the active piece in two at the playhead. | — |
+| **Delete** | Deletes the piece selected on the timeline. | — |
+| **Camera** | Turns on camera mode: camera + microphone recording (under development). | — |
+| **Sound** | Starts / stops audio recording with the microphone. | — |
+| **I** | Turns the noise filter on / off (persistent setting). | — |
+| **S** | Clears the `medya_cut` working folder and resets the timeline. | — |
+| **Seek interval** (drop-down) | Sets the wheel's forward / back seek step (2 s, 5 s, 1 min …). | — |
+| **Playback speed** (drop-down) | Changes the playback speed (0.5x, 1x, 2x …). | — |
+| **Export** | Exports all pieces as a `.media` archive (project save). | Renders the whole timeline into a single `.mkv` video. |
+| **Media** | The program name. Opens the `Ctrl + Q` menu. | — |
+
+> **Note:** Camera and microphone recording uses the C++ recorder on Linux, and OpenCV + PortAudio + FFmpeg on Windows/macOS. Camera / microphone permission is requested on first use.
+
+---
+
+# Rec: recorder
+
+**Screen and audio recording program.** Recording is taken in the background piece by piece (`s1.mkv`, `s2.mkv` …); **Export** merges them all in order.
+
+<img width="1918" height="1046" alt="r1" src="https://github.com/user-attachments/assets/9e91a992-8da1-4b17-b614-d4e0e4f235fa" />
+
+| Button | Function |
+| :--- | :--- |
+| **File** | Loads an external video (`.rec`, `.mp4`, `.mkv`) or audio (`.wav`) file into the player. |
+| **Camera** | Opens the floating camera window; the window appears in the screen recording (under development). |
+| **Windows** | Decides whether the screen is recorded. Its color changes when active; it can be turned off for audio-only recording. |
+| **Sound** | Turns microphone / system-audio recording on / off. On Linux it detects EasyEffects and default PulseAudio sources automatically. |
+| **I** | Turns the noise-suppression and audio-filter chain on / off (applied while exporting). |
+| **S** | Deletes everything and closes. |
+| **Thickness** (number) | Sets the thickness (30–50 px) of the floating window.<br>• Wheel: thickness<br>• Left click: puts the floating window back at the default position<br>• Right click: makes the current position the default |
+| **/** | Shows / hides the floating black panel that displays keystrokes and mouse clicks. |
+| **Z** | Shows / hides the live recording-time panel on screen. |
+| **Duration** (drop-down) | Recording limit (1–30 min): recording pauses automatically when it is reached. |
+| **Segment** (drop-down) | Sets how many seconds pass before a new piece file is created in the background. |
+| **Play / Pause** | Starts / pauses recording or playback (global shortcut: `Ctrl + M`). |
+| **X** | Closes the open-file playback bar and resets the player. |
+| **Segment X** (menu) | Lists the accumulated recording pieces; delete one by one or with **All**. |
+| **Export** | Merges all pieces in order, optionally applies the audio filter, and saves as MKV / WAV. |
+| **Rec** | The program name. Opens the `Ctrl + Q` menu. |
+
+> **Note:** Designed to work on older computers; there is a time limit. Test on your own computer before creating large files.
+>
+> **Windows / macOS:** screen recording uses FFmpeg (`gdigrab` / `avfoundation`) and the camera uses OpenCV. There is no live screen preview or audio-level panel; recording speaker audio needs a virtual audio device (Windows: Stereo Mix / VB-Cable, macOS: BlackHole). macOS asks for **Screen Recording**, Camera and Microphone permissions.
+
+<img width="1920" height="1045" alt="R" src="https://github.com/user-attachments/assets/bbb4c6c4-e8c5-41cf-9273-8ffed6543335" />
+
+---
+
+# Copy: notes
+
+**Notebook program.** Stores colored notes, image / text galleries and PDF pages.
+
+<img width="1920" height="1043" alt="N" src="https://github.com/user-attachments/assets/34d80842-0917-4ae5-8d5c-5f28b30d7e00" />
+
+| Button | Function |
+| :--- | :--- |
+| **File** | Opens a `.copya` project file. |
+| **Save** (disk icon) | Saves the project (opens "save as" if there is no file yet). |
+| **+** | Adds a new empty note. |
+| **Gallery** | Picks images, `.txt` and `.txr` files and adds them as a gallery note. |
+| **Document** | Imports a `PDF` or `PNF` (Drawing) file page by page as a gallery note. |
+| **#** (page number) | Menu for moving between items in the expanded gallery. |
+| **I** | Starts / stops auto-scroll (reading mode). |
+| **Speed** (number) | Auto-scroll speed menu. |
+| **Size** (number) | Sets the page size in document mode. |
+| **X** | Deletes the expanded note. |
+| **_** | Shrinks the expanded note. |
+| **/** | Copies the note's content to the clipboard (file path for images, plain text for text). |
+| **Export** | Exports the project as a `.copya` archive. |
+| **Copy** | The program name. Opens the `Ctrl + Q` menu. |
+
+---
+
+# Filter: audio filter
+
+**Audio and video filtering.** Processes audio and video files with spectral noise reduction, smart VAD (voice activity detection) and multi-layer filtering.
+
+- **x1 filter (spectral cleaning):** 2-stage noise reduction; strength setting 1–9.
+- **x2 filter (smart low-frequency muting):** mutes noise regions below the frequency you set between 30–200 Hz.
+- **Noise profiles:** targeted profiles created by the user (up to 8).
+- **Video support:** extracts audio from a video, filters it, and merges the processed audio back into the video (FFmpeg).
+- **Audio editing panel:** overall volume, background-music level, pitch, speed, music length after the end.
+- **Persistent music:** saves the background music and adds it automatically every time.
+- **5-second preview** and a **report panel** showing the last 5 operations.
+
+<img width="1920" height="1048" alt="F" src="https://github.com/user-attachments/assets/c6763870-86d7-4973-b307-0e94eecca578" />
+
+| Button | Left click | Right click |
+| :--- | :--- | :--- |
+| **File** | Loads an audio or video file. | — |
+| **::** | Picks an audio file for a noise profile (up to 8). | — |
+| **/** | Shows / hides the audio editing panel. | — |
+| **Process** | Applies the active filters to the selected file. | — |
+| **Reset** | Resets the settings if the panel is open; otherwise returns all profiles to defaults (x1 strength = 5, x2 cutoff = 75 Hz). | — |
+| **Play** | Plays a 5-second preview of the filtered audio; click again to pause. | — |
+| **Music** | Picks background music (temporary). | Makes the selected music persistent or cancels it. |
+| **Export** | Saves the filtered audio (WAV, MP3, FLAC) or video (original format). | — |
+
+> **Note:** Filter is linked to **Sound, Media and Rec**. If you turn on the **I** icon in the top bar of these three programs, the file is filtered while audio is being recorded.
+
+---
+
+# Converter: format converter
+
+**File format conversion program.** Converts audio, video, PDF and image files.
+
+<img width="1920" height="1027" alt="C" src="https://github.com/user-attachments/assets/87a96bb1-d300-48c4-a062-9aaf4cf3e815" />
+
+| Control | Function |
+| :--- | :--- |
+| **File** | Selects the file to convert (audio, video, PDF, image). |
+| **Convert** | Converts the selected file using the settings below. |
+| **Reset** | Returns all conversion settings to their defaults. |
+| **Export** | Saves the output file to the chosen location. |
+| **Format** | Output format (`.wav`, `.mp3`, `.mp4`, `.pdf`, `.jpg` …). |
+| **Change frequency / New frequency (Hz)** | Turns audio sample-rate change on / off; the target Hz value is entered. |
+| **Audio speed** | 0.10x – 4.0x. |
+| **Audio pitch** | −6 to +6 semitones. |
+| **Audio effect** | Normalize, Compress, Filter, Fade, Shift, etc. |
+| **Choose cover image** | Picks the cover image used when turning audio into video. |
+| **Video: invert colors / grayscale / remove audio** | Applied to the output when Yes is selected. |
+| **Add external audio (Sync)** | Picks an external audio file to be added to the video as the main audio. |
+| **PDF / Image: invert, grayscale** | Applied to the output when Yes is selected. |
+| **Image resolution** | −5 = shrink 25%, 0 = original, +5 = enlarge 250%. |
+
+### License
+
+GNU General Public License version 3 or (at your option) any later version — see the header of `kavram.py`.
+
+[⬆ Back to top](#kavram) · [🇹🇷 Türkçe](#türkçe)
